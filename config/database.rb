@@ -4,7 +4,7 @@ defaults = {
     database: 'bedabot_test',
     pool: 5,
     username: 'postgres',
-    host: 'postgress'
+    host: 'postgres'
   }
 configure :test do
   set :database, defaults
