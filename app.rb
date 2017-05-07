@@ -4,7 +4,7 @@ require 'sinatra/activerecord'
 require './config/database'
 
 class App < Sinatra::Base
-  get '/' do
+  get '/sinatra' do
     'Hello Word'
   end
 end

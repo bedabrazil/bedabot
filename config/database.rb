@@ -15,5 +15,5 @@ configure :development do
 end
 
 configure :production do
-  set :database, defaults.merge({database:'bedabot_production')
+  set :database, defaults.merge({database:'bedabot_production'})
 end
