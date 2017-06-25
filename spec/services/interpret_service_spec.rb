@@ -3,8 +3,6 @@ require_relative './../spec_helper.rb'
 describe InterpretService do
   before :each do
     @company = create(:company)
-    @params_invalid = {"question-original" => @question, "answer-original" => @answer}
-    @params_valid = {"question-original" => @question, "answer-original" => @answer, "hashtags-original" => @hashtags}
   end
 
   describe '#list' do
@@ -66,6 +64,9 @@ describe InterpretService do
       @question = FFaker::Lorem.sentence
       @answer = FFaker::Lorem.sentence
       @hashtags = "#{FFaker::Lorem.word}, #{FFaker::Lorem.word}"
+      @params_invalid = {"question.original" => @question, "answer.original" => @answer}
+      @params_valid = {"question.original" => @question, "answer.original" => @answer, "hashtags.original" => @hashtags}
+      
     end
 
     it "Without hashtag params, receive a error" do
