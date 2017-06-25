@@ -15,5 +15,15 @@ configure :development do
 end
 
 configure :production do
-  set :database, defaults.merge({database:'bedabot_production'})
+  db = URI.parse(ENV['DATABASE_URL'] || 'postgres:///postgres/bedabot_production')
+
+  set :database, defaults.merge({
+    adapter:  db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+    host:     db.host,
+    username: db.user,
+    password: db.password,
+    database: db.path[1..-1],
+    encoding: 'utf8'
+  })
+  
 end
