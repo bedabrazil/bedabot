@@ -23,7 +23,39 @@ class App < Sinatra::Base
     {
       "speech": response,
       "displayText": response,
-      "source": "Slack"
+      "source": "Faq Bot",
+      "data": {
+        "facebook": {
+          "attachment": {
+            "type": "template",
+            "payload": {
+              "template_type": "list",
+              "elements": [
+                {
+                  "title": "Classic T-Shirt Collection",
+                  "image_url": "https://peterssendreceiveapp.ngrok.io/img/collection.png",
+                  "subtitle": "See all our colors",
+                  "default_action": {
+                    "type": "web_url",
+                    "url": "https://peterssendreceiveapp.ngrok.io/shop_collection",
+                    "webview_height_ratio": "tall"
+                  },
+                  "buttons": [
+                    {
+                      "title": "View",
+                      "type": "web_url",
+                      "url": "https://peterssendreceiveapp.ngrok.io/collection",
+                      "messenger_extensions": true,
+                      "webview_height_ratio": "tall",
+                      "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      }
     }.to_json
   end
 end
