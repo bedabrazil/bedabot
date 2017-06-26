@@ -8,8 +8,8 @@ describe FaqModule::CreateService do
     @answer = FFaker::Lorem.sentence
     @hashtags = "#{FFaker::Lorem.word}, #{FFaker::Lorem.word}"
     
-    @params_valid = {"question.original" => @question, "answer.original" => @answer, "hashtags.original" => @hashtags}
-    @params_invalid = {"question.original" => @question, "answer.original" => @answer}
+    @params_valid = {"question-original" => @question, "answer-original" => @answer, "hashtags-original" => @hashtags}
+    @params_invalid = {"question-original" => @question, "answer-original" => @answer}
   end
 
   describe '#call' do
