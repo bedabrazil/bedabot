@@ -10,7 +10,7 @@ module FaqModule
     def call
       faq = @company.faqs.where(id: @id).last
       if faq.blank?
-        return "Questão inválida, verifique o Id"
+        return "Questão inválida ou inexistente, verifique o número passado."
       end
       
       Faq.transaction do
