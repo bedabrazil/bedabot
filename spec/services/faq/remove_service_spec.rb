@@ -27,8 +27,8 @@ describe FaqModule::RemoveService do
     it "With invalid ID, receive error message" do
       @removeService = FaqModule::RemoveService.new({"id" => rand(1..9999)})
       response = @removeService.call()
-
-      expect(response).to match("Questão inválida, verifique o Id")
+      message = ['Digite o número da questão?', 'Qual o número da questão?', 'Qual o id/número da questão?', 'Qual o número da questão?', 'Qual o número do faq?', 'Questão inválida ou inexistente, verifique o número passado.']
+      expect(message).to include(response)
     end
   end
 end
