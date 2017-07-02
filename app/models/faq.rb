@@ -2,7 +2,7 @@ require "pg_search"
 include PgSearch
 
 class Faq < ActiveRecord::Base
-  validates_presence_of :question, :answer
+  validates_presence_of :question, :answer, :company_id
 
   has_many :faq_hashtags
   has_many :hashtags, through: :faq_hashtags

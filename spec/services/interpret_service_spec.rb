@@ -64,8 +64,8 @@ describe InterpretService do
       @question = FFaker::Lorem.sentence
       @answer = FFaker::Lorem.sentence
       @hashtags = "#{FFaker::Lorem.word}, #{FFaker::Lorem.word}"
-      @params_invalid = {"question.original" => @question, "answer.original" => @answer}
-      @params_valid = {"question.original" => @question, "answer.original" => @answer, "hashtags.original" => @hashtags}
+      @params_invalid = {"question-original" => @question, "answer-original" => @answer}
+      @params_valid = {"question-original" => @question, "answer-original" => @answer, "hashtags-original" => @hashtags}
       
     end
 
@@ -111,7 +111,7 @@ describe InterpretService do
 
     it "With invalid ID, receive error message" do
       response = InterpretService.call('remove', {"id" => rand(1..9999)})
-      expect(response).to match("Questão inválida, verifique o Id")
+      expect(["Não encontramos está questão, digite o número correto?", "Não encontramos está questão, qual o número da questão?", "Qual o id/número correto da questão?", "Qual o número da questão?", "Qual o número do faq?", "Questão inválida ou inexistente, verifique o número do faq."]).to include(response)
     end
   end
 end

@@ -10,7 +10,7 @@ module FaqModule
     def call
       faq = @company.faqs.where(id: @id).last
       if faq.blank?
-        return ['Não encontramos está questão, digite o número correto?', 'Não encontramos está questão, qual o número da questão?', 'Qual o id/número correto da questão?', 'Qual o número da questão?', 'Qual o número do faq?', 'Questão inválida ou inexistente, verifique o número passado.'].sample
+        return ['Não encontramos está questão, digite o número correto?', 'Não encontramos está questão, qual o número da questão?', 'Qual o id/número correto da questão?', 'Qual o número da questão?', 'Qual o número do faq?', 'Questão inválida ou inexistente, verifique o número do faq.'].sample
       end
       
       Faq.transaction do
