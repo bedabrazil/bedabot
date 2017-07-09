@@ -190,7 +190,7 @@ RSpec.describe InterpretService do
 
       it "With valid params, receive success message" do
         response = InterpretService.call('create_link', @params_valid)
-        expect(response).to be_valid
+        expect(response).to match('Criado com sucesso')
       end
 
       it "With valid params, find url in database" do
