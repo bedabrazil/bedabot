@@ -19,7 +19,7 @@ module LinkModule
         end
         "Criado com sucesso" 
       rescue => exception
-        "Problemas na criação #{exception}"
+        "Problemas na criação"
       end
     end
   end

@@ -4,7 +4,7 @@ module LinkModule
       # TODO: identify origin and set company
       @company = Company.last
       @action = action
-      @query = params['query']
+      @query = params["query"]
     end
     
     def call
