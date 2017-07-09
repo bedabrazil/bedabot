@@ -21,6 +21,10 @@ module LinkModule
         links.each do |link|
           response << "*#{link.id}* - #{link.url} "
           response << "\n> #{link.description}" if link.description
+          response << "\n"
+          link.hashtags.each do |tag|
+            response << "_##{tag.name}_ "
+          end
         end
       end
       response.blank? ? ["Nada encontrado", "Nenhum Link encontrado", "Não encontramos nada", "Sua busca não teve resultado"].sample : response
