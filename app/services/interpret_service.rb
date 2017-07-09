@@ -11,6 +11,8 @@ class InterpretService
       LinkModule::ListService.new(params, action).call
     when "remove_link"
       LinkModule::RemoveService.new(params).call
+    when "create_link"
+      LinkModule::CreateService.new(params).call
     when "help"
       HelpService.call
     else

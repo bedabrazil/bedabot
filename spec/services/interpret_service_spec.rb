@@ -173,6 +173,38 @@ RSpec.describe InterpretService do
       end
     end
 
+    #CREATE LINK
+    describe '#create_link' do
+      before do
+        @company = create(:company)
+        @url = FFaker::Internet.http_url
+        @hashtags = "#{FFaker::Lorem.word}, #{FFaker::Lorem.word}"
+        @params_valid = {"url-original" => @url, "hashtags-original" => @hashtags}
+        @params_invalid = {"url-original" => @url}
+      end
+
+      it "Without hashtag params, receive a error" do
+        response = InterpretService.call('create_link', @params_invalid)
+        expect(response).to match("Hashtag Obrigatória")
+      end
+
+      it "With valid params, receive success message" do
+        response = InterpretService.call('create_link', @params_valid)
+        expect(response).to be_valid
+      end
+
+      it "With valid params, find url in database" do
+        response = InterpretService.call('create_link', @params_valid)
+        expect(Link.last.url).to match(@url)
+      end
+
+      it "With valid params, hashtags are created" do
+        response = InterpretService.call('create_link', @params_valid)
+        expect(@hashtags.split(/[\s,]+/).first).to match(Hashtag.first.name)
+        expect(@hashtags.split(/[\s,]+/).last).to match(Hashtag.last.name)
+      end
+    end    
+
     #REMOVE LINK
     describe '#remove_link' do
       it "With valid ID, remove Link" do
