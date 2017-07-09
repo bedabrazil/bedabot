@@ -10,7 +10,6 @@ module LinkModule
       if @hashtags.blank?
         return "Hashtag Obrigatória"
       end
-      link_url = nil   
       begin
         Link.transaction do
           link_url = Link.create(url: @url, company: @company)
