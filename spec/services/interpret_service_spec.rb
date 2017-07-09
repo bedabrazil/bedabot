@@ -42,9 +42,9 @@ RSpec.describe InterpretService do
       end
     end
 
-    describe '#search_faq_by_hashtag' do
+    describe '#search_faq_by_tag' do
       it "With invalid hashtag, return don't find message" do
-        response = InterpretService.call('search_faq_by_hashtag', {"query": ''})
+        response = InterpretService.call('search_faq_by_tag', {"query": ''})
         expect(@result).to include(response)
       end
 
@@ -53,7 +53,7 @@ RSpec.describe InterpretService do
         hashtag = create(:hashtag, company: @company)
         create(:faq_hashtag, faq: faq, hashtag: hashtag)
 
-        response = InterpretService.call('search_faq_by_hashtag', {"query" => hashtag.name})
+        response = InterpretService.call('search_faq_by_tag', {"query" => hashtag.name})
 
         expect(response).to match(faq.question)
         expect(response).to match(faq.answer)

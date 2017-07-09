@@ -1,7 +1,7 @@
 class InterpretService
   def self.call action, params
     case action
-    when "list_faq", "search_faq", "search_faq_by_hashtag"
+    when "list_faq", "search_faq", "search_faq_by_tag"
       FaqModule::ListService.new(params, action).call
     when "create_faq"
       FaqModule::CreateService.new(params).call

@@ -10,7 +10,7 @@ module FaqModule
     def call
       if @action == "search_faq"
         faqs = Faq.search(@query).where(company: @company)
-      elsif @action == "search_faq_by_hashtag"
+      elsif @action == "search_faq_by_tag"
         faqs = []
         @company.faqs.each do |faq|
           faq.hashtags.each do |hashtag|
