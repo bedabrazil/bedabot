@@ -17,7 +17,7 @@ module LinkModule
       end
       response = nil
       if !links.blank?
-        response = "Links encontrados pela Tag #{@query} \n"        
+        response = "Links encontrados \n"        
         links.each do |link|
           response << "*#{link.id}* - #{link.url} "
           response << "\n> #{link.description}" if link.description
