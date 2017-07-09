@@ -8,9 +8,9 @@ module FaqModule
     end
 
     def call
-      if @action == "search"
+      if @action == "search_faq"
         faqs = Faq.search(@query).where(company: @company)
-      elsif @action == "search_by_hashtag"
+      elsif @action == "search_faq_by_hashtag"
         faqs = []
         @company.faqs.each do |faq|
           faq.hashtags.each do |hashtag|
@@ -22,16 +22,17 @@ module FaqModule
       end
 
       response = "*Perguntas e Respostas* \n\n"
-      faqs.each do |f|
-        response += "*#{f.id}* - "
-        response += "*#{f.question}*\n"
-        response += ">#{f.answer}\n"
-        f.hashtags.each do |h|
-          response += "_##{h.name}_ "
+      faqs.each do |faq|
+        response += "*#{faq.id}* - "
+        response += "*#{faq.question}*\n"
+        response += ">#{faq.answer}\n"
+        faq.hashtags.each do |tag|
+          response += "_##{tag.name}_ "
         end
         response += "\n\n"
       end
-      (faqs.count > 0)? response : "Nada encontrado"
+      (faqs.count > 0) ? response : ["Nada encontrado", "Nenhum Faq encontrado", "Não encontramos nada", "Sua busca não teve resultado"].sample
+
     end
   end
 end

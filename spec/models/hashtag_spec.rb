@@ -19,5 +19,10 @@ RSpec.describe Hashtag, type: :model do
   it 'has_many faqs Should return an assert' do
     hashtag = build(:hashtag)
     expect(hashtag).to have_many(:faqs)
-  end    
+  end
+  it 'has_many links Should return an assert' do
+    hashtag = build(:hashtag)
+    expect(hashtag).to have_many(:links)
+  end
+      
 end

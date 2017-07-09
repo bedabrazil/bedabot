@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170507211342) do
+ActiveRecord::Schema.define(version: 20170702183904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,20 @@ ActiveRecord::Schema.define(version: 20170507211342) do
     t.string "name"
     t.integer "company_id"
     t.index ["company_id"], name: "index_hashtags_on_company_id"
+  end
+
+  create_table "link_hashtags", force: :cascade do |t|
+    t.integer "link_id"
+    t.integer "hashtag_id"
+    t.index ["hashtag_id"], name: "index_link_hashtags_on_hashtag_id"
+    t.index ["link_id"], name: "index_link_hashtags_on_link_id"
+  end
+
+  create_table "links", force: :cascade do |t|
+    t.string "url"
+    t.string "description"
+    t.integer "company_id"
+    t.index ["company_id"], name: "index_links_on_company_id"
   end
 
 end

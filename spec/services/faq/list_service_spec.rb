@@ -3,6 +3,7 @@ require_relative './../../spec_helper.rb'
 describe FaqModule::ListService do
   before do
     @company = create(:company)
+    @result = ["Nada encontrado", "Nenhum Faq encontrado", "Não encontramos nada", "Sua busca não teve resultado"]
   end
 
   describe '#call' do
@@ -10,7 +11,7 @@ describe FaqModule::ListService do
       @listService = FaqModule::ListService.new({}, 'list')
 
       response = @listService.call()
-      expect(response).to match("Nada encontrado")
+      expect(@result).to include(response)
     end
 
     it "with list command: with two faqs, find questions and answer in response" do
@@ -32,7 +33,7 @@ describe FaqModule::ListService do
       @listService = FaqModule::ListService.new({'query' => ''}, 'search')
 
       response = @listService.call()
-      expect(response).to match("Nada encontrado")
+      expect(@result).to include(response)
     end
 
     it "with search command: With valid query, find question and answer in response" do
@@ -50,7 +51,7 @@ describe FaqModule::ListService do
       @listService = FaqModule::ListService.new({'query' => ''}, 'search_by_hashtag')
 
       response = @listService.call()
-      expect(response).to match("Nada encontrado")
+      expect(@result).to include(response)
     end
 
     it "with search_by_hashtag command: With valid hashtag, find question and answer in response" do
