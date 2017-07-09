@@ -3,10 +3,10 @@ require_relative './../../spec_helper.rb'
 describe LinkModule::CreateService do
   before do
     @company = create(:company)
+    @link = create(:link, company: @company)
     @hashtags = "#{FFaker::Lorem.word}, #{FFaker::Lorem.word}"
-    @url = FFaker::Internet.http_url
-    @params_valid = {"url-original" => @url, "hashtags-original" => @hashtags}
-    @params_invalid = {"url-original" => @url}    
+    @params_valid = {"url-original" => @link.url, "hashtags-original" => @hashtags}
+    @params_invalid = {"url-original" => @link.url}    
   end
   describe "#call" do
     it "with hashtags params invalid, return an error" do 
@@ -19,7 +19,7 @@ describe LinkModule::CreateService do
     end    
     it "With valid params, find url in database" do
       response = LinkModule::CreateService.new(@params_valid).call
-      expect(Link.last.url).to eq(@url)
+      expect(Link.last.url).to eq(@link.url)
     end
     it "With valid params, hashtags are created" do
       LinkModule::CreateService.new(@params_valid).call
