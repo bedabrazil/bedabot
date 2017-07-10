@@ -15,19 +15,18 @@ module LinkModule
       else
         links = @company.links        
       end
-      response = nil
       if !links.blank?
-        response = "Links encontrados \n"        
+        response = "Links encontrados \n"    
         links.each do |link|
           response << "*#{link.id}* - #{link.url} "
           response << "\n> #{link.description}" if link.description
           response << "\n"
           link.hashtags.each do |tag|
-            response << "_##{tag.name}_ "
+            response << "_##{tag.name}_ \n"
           end
         end
       end
-      response.blank? ? ["Nada encontrado", "Nenhum Link encontrado", "Não encontramos nada", "Sua busca não teve resultado"].sample : response
+      links.blank? ? ["Nada encontrado", "Nenhum Link encontrado", "Não encontramos nada", "Sua busca não teve resultado"].sample : response
     end
   end
 end

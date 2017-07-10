@@ -169,7 +169,7 @@ RSpec.describe InterpretService do
 
         response = InterpretService.call('search_link_by_tag', {"query" => hashtag.name})
 
-        expect(response).to match(link.url)
+        expect(response).to match(hashtag.name)
       end
     end
 
