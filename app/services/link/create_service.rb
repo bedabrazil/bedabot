@@ -17,7 +17,7 @@ module LinkModule
             link_url.hashtags << Hashtag.create(name: hashtag, company: @company)
           end
         end
-        "Criado com sucesso" 
+        "Criado com sucesso #{link_url.inspect}" 
       rescue => exception
         "Problemas na criação"
       end
