@@ -14,10 +14,12 @@ describe LinkModule::ListService do
     it "With two links, find url's in response" do
       link1 = create(:link, company: @company)
       link2 = create(:link, url: 'http://www.uol.com.br', company: @company)
+      url1 = "#{URI.parse(link1.url).host}#{URI.parse(link1.url).path}"
+      url2 = "#{URI.parse(link2.url).host}#{URI.parse(link2.url).path}"
 
       response = LinkModule::ListService.new('list_link', {}).call
-      expect(response).to match(link1.url)
-      expect(response).to match(link2.url)
+      expect(response).to match(url1)
+      expect(response).to match(url2)
     end    
   end
   describe '#search_link', search_link: true do
@@ -29,8 +31,10 @@ describe LinkModule::ListService do
     
     it "With valid query, find url in response" do
       link = create(:link, company: @company)
-      response = LinkModule::ListService.new('search_link', {"query" => link.url}).call
-      expect(response).to match(link.url)
+      url = URI.parse(link.url)
+      url = "#{url.host}#{url.path}"
+      response = LinkModule::ListService.new('search_link', {"query" => url}).call
+      expect(response).to match(url)
     end
   end    
 end

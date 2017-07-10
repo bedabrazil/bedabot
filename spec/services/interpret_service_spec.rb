@@ -131,10 +131,13 @@ RSpec.describe InterpretService do
       it "With two links, find url's in response" do
         link1 = create(:link, company: @company)
         link2 = create(:link, url: 'http://www.uol.com.br', company: @company)
+        
+        url1 = "#{URI.parse(link1.url).host}#{URI.parse(link1.url).path}"
+        url2 = "#{URI.parse(link2.url).host}#{URI.parse(link2.url).path}"
 
         response = InterpretService.call('list_link', {})
-        expect(response).to match(link1.url)
-        expect(response).to match(link2.url)
+        expect(response).to match(url1)
+        expect(response).to match(url2)
       end
     end
     
@@ -149,8 +152,9 @@ RSpec.describe InterpretService do
       it "With valid query, find url in response" do
         link = create(:link, company: @company)
         url = URI.parse(link.url)
-        response = InterpretService.call('search_link', {"query" => "#{url.host}#{url.path}"})
-        expect(response).to match(link.url)
+        url = "#{url.host}#{url.path}"
+        response = InterpretService.call('search_link', {"query" => url})
+        expect(response).to match(url)
       end
     end  
     
