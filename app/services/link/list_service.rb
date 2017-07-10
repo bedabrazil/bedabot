@@ -16,7 +16,7 @@ module LinkModule
         links = @company.links        
       end
       response = nil
-      unless links.blank?
+      unless links.count > 0
         response = "Links encontrados \n"    
         links.each do |link|
           response << "*#{link.id}* - #{URI.parse(link.url).host}#{URI.parse(link.url).path} "
