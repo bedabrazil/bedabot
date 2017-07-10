@@ -17,11 +17,11 @@ module LinkModule
       end
       response = "Links encontrados \n"    
       links.each do |link|
-        response << "*#{link.id}* - #{URI.parse(link.url).host}#{URI.parse(link.url).path} "
-        response << "\n> #{link.description}" if link.description
-        response << "\n"
+        response += "*#{link.id}* - #{URI.parse(link.url).host}#{URI.parse(link.url).path} "
+        response += "\n> #{link.description}" if link.description
+        response += "\n"
         link.hashtags.each do |tag|
-          response << "_##{tag.name}_ \n"
+          response += "_##{tag.name}_ \n"
         end
       end
       (links.count > 0) ? response : ["Nada encontrado", "Nenhum Link encontrado", "Não encontramos nada", "Sua busca não teve resultado"].sample
