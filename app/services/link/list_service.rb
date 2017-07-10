@@ -18,7 +18,7 @@ module LinkModule
       if !links.blank?
         response = "Links encontrados \n"    
         links.each do |link|
-          response << "*#{link.id}* - #{link.url} "
+          response << "*#{link.id}* - #{URI.parse(link.url).host}#{URI.parse(link.url).path} "
           response << "\n> #{link.description}" if link.description
           response << "\n"
           link.hashtags.each do |tag|
