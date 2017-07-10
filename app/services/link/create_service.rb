@@ -14,7 +14,7 @@ module LinkModule
         Link.transaction do
           link_url = Link.create(url: @url, company: @company)
           @hashtags.split(/[\s,]+/).each do |hashtag|
-            link_url.hashtags << Hashtag.create(name: hashtag)
+            link_url.hashtags << Hashtag.create(name: hashtag, company: @company)
           end
         end
         "Criado com sucesso" 
