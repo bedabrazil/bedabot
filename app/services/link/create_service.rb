@@ -5,6 +5,7 @@ module LinkModule
       @company = Company.last
       @url = params["url"]
       @hashtags = params["hashtags-original"]
+      puts params
     end
     def call
       if @hashtags.blank?
