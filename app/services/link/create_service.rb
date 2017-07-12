@@ -19,7 +19,7 @@ module LinkModule
         if link.errors.blank?
           "Criado com sucesso" 
         else
-          link.errors[0].message
+          link.errors.inspect
         end
       rescue => exception
         "Problemas na criação: #{exception}"
