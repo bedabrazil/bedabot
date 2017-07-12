@@ -22,7 +22,7 @@ module LinkModule
           links.errors[0].message
         end
       rescue => exception
-        "Problemas na criação"
+        "Problemas na criação: #{exception}"
       end
     end
   end
