@@ -19,7 +19,7 @@ module LinkModule
       if links.count > 0
         response = "Links encontrados \n"    
         links.each do |link|
-          response << "*#{link.id}* - #{link.url} "
+          response << "*#{link.id}* - <#{link.url}> "
           response << "\n> #{link.description}" if link.description
           response << "\n"
           link.hashtags.each do |tag|
