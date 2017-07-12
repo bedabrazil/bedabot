@@ -6,6 +6,7 @@ gem 'sinatra-activerecord'
 gem 'pg'
 gem 'rake'
 gem 'pg_search'
+gem 'rails-i18n'
 group :development do
   gem 'tux'
   gem 'byebug'
