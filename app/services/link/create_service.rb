@@ -3,9 +3,8 @@ module LinkModule
     def initialize(params)
       # TODO: identify origin and set company
       @company = Company.last
-      @url = params["url-original"]
+      @url = params["url"]
       @hashtags = params["hashtags-original"]
-      puts params
     end
     def call
       if @hashtags.blank?
