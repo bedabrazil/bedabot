@@ -1,8 +1,10 @@
 require 'json'
 require 'sinatra'
+require 'i18n'
 require 'sinatra/activerecord'
 require './config/database'
 
+I18n.load_path += Dir[File.join(File.dirname(__FILE__), 'config/locales', '*.yml').to_s]
 Dir["./app/models/*.rb"].each {|file| require file }
 Dir["./app/services/**/*.rb"].each {|file| require file }
 
