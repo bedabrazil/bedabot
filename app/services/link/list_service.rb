@@ -5,6 +5,7 @@ module LinkModule
       @company = Company.last
       @action = action
       @query = params["query"]
+      puts params
     end
     
     def call
