@@ -16,7 +16,7 @@ module LinkModule
         @hashtags.split(/[\s,]+/).each do |hashtag|
           link.hashtags << Hashtag.create(name: hashtag, company: @company)
         end
-        if !link.errors.blank?
+        if link.errors.blank?
           "Criado com sucesso" 
         else
           links.errors[0].message
