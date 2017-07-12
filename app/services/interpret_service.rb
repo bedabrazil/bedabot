@@ -7,7 +7,7 @@ class InterpretService
       FaqModule::CreateService.new(params).call
     when "remove_faq"
       FaqModule::RemoveService.new(params).call
-    when 'list_link', 'search_link', 'search_link_by_tag'
+    when "list_link", "search_link", "search_link_by_tag"
       LinkModule::ListService.new(params, action).call
     when "remove_link"
       LinkModule::RemoveService.new(params).call

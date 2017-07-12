@@ -11,7 +11,7 @@ module LinkModule
       if @action == 'search_link'
         links = Link.search(@query).where(company: @company)   
       elsif @action == 'search_link_by_tag'
-        links = @company.hashtags.where(name: @query).map(&:links).flatten
+        links = @company.hashtags.search(@query).map(&:links).flatten
       else
         links = @company.links        
       end
@@ -19,7 +19,7 @@ module LinkModule
       if links.count > 0
         response = "Links encontrados \n"    
         links.each do |link|
-          response << "*#{link.id}* - #{URI.parse(link.url).host}#{URI.parse(link.url).path} "
+          response << "*#{link.id}* - #{link.url} "
           response << "\n> #{link.description}" if link.description
           response << "\n"
           link.hashtags.each do |tag|
