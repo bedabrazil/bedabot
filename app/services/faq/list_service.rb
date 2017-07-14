@@ -23,13 +23,18 @@ module FaqModule
 
       response = "*Perguntas e Respostas* \n\n"
       faqs.each do |faq|
-        response += "*#{faq.id}* - "
-        response += "*#{faq.question}*\n"
-        response += ">#{faq.answer}\n"
+        response << "*#{faq.id}* - "
+        response << "*#{faq.question}*\n"
+        response << ">#{faq.answer}\n"
         faq.hashtags.each do |tag|
-          response += "_##{tag.name}_ "
+          response << "_##{tag.name}_ \n"
+          if !tag.links.blank?
+            tag.links.each do |link|
+              response << ">#{link.id} - <#{link.url}>"
+            end
+          end
         end
-        response += "\n\n"
+        response << "\n\n"
       end
       (faqs.count > 0) ? response : ["Nada encontrado", "Nenhum Faq encontrado", "Não encontramos nada", "Sua busca não teve resultado"].sample
 
