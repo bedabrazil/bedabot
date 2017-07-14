@@ -14,7 +14,7 @@ class Link < ActiveRecord::Base
 
   pg_search_scope :search, :against => :url
 
-  before_validation :add_protocol, :on => :create
+  before_save :add_protocol
   
   private 
   

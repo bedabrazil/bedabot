@@ -3,7 +3,7 @@ require_relative './../spec_helper.rb'
 RSpec.describe Link, type: :model do
 
   it 'with URI invalid return error' do
-    link = build(:link, url: 'url_errada')
+    link = build(:link, url: 'urlerrada')
     expect(link).to be_invalid
   end
   it 'with URI nil return error' do
