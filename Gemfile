@@ -1,5 +1,5 @@
 source :rubygems
-ruby '2.3.4'
+ruby '2.4.1'
 gem 'sinatra'
 gem 'activerecord'
 gem 'sinatra-activerecord'
