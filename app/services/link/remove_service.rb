@@ -4,7 +4,6 @@ module LinkModule
       @company = Company.last
       @params = params
       @id = params["id"]
-      puts params
     end
     def call
       link = @company.links.where(id: @id).last

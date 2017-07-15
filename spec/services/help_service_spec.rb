@@ -4,12 +4,12 @@ describe HelpService do
   describe '#call' do
     it "Response have the main commands" do
       response = HelpService.call()
-      expect(response).to match('help')
-      expect(response).to match('Adicione ao Faq')
-      expect(response).to match('Remova ID')
-      expect(response).to match('O que você sabe sobre X')
-      expect(response).to match('Pesquise a hashtag X')
-      expect(response).to match('Perguntas e Respostas')
+      expect(response).to match('Mostrar estes comandos')
+      expect(response).to match('Adiciona uma nova questão ao Faq')
+      expect(response).to match('Adiciona um novo Link')
+      expect(response).to match('Remove uma questão ou Link baseado no ID/Número')
+      expect(response).to match('Pesquisar por tags na lista de perguntas e respostas')
+      expect(response).to match('Pesquisar por tags na lista de Links')
     end
   end
 end

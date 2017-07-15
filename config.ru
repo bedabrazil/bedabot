@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'bundler'
 
-$stdout.sync = true
+$stdout.sync = false
 
 Bundler.require
 
