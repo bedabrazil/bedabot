@@ -3,7 +3,7 @@ class HelpService
   def self.call
     response  = "*O que eu sei fazer :raised_hands:*\n\n"
     response << "*Mostrar estes comandos*\n"
-    response << ">help\n\n>Ajuda\n\n"
+    response << ">help\n\n>Ajuda\n\n>O que você sabe fazer?\n\n>Listar Comandos\n\n"
 
     response << "*Adiciona uma nova questão ao Faq*\n"
     response << ">Adicione ao Faq\n\n>Adicionar Faq\n\n>Adicione uma Questão\n\n"
