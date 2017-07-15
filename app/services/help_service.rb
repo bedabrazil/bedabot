@@ -1,7 +1,7 @@
 
 class HelpService
   def self.call
-    response  = "*O que eu sei fazer :raised_hands:*\n\n"
+    response  = "*O que eu sei fazer :fast_parrot:*\n\n"
     response << "*Mostrar estes comandos*\n"
     response << ">help\n\n>Ajuda\n\n>O que você sabe fazer?\n\n>Listar Comandos\n\n"
 
