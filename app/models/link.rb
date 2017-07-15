@@ -3,8 +3,7 @@ include PgSearch
 
 class Link < ActiveRecord::Base
   validates_presence_of :url, :company_id
-  validates :url, :format => {:with => /\A(http|https|www):(\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?\z/ix}, :if => Proc.new{|l| l.url.present?}
-  # validates_format_of :url, :with => /\A(http|https|www):(\/\/)|[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?\z/, :if => Proc.new{|l| l.url.present?}
+  validates :url, :format => {:with => /\A(http|https):(\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?\z/ix}, :if => Proc.new{|l| l.url.present?}
   validates_uniqueness_of :url
 
   has_many :link_hashtags
@@ -20,7 +19,7 @@ class Link < ActiveRecord::Base
   
   def add_protocol
     unless self.url =~ /\Ahttp:\/\// || self.url =~ /\Ahttps:\/\//
-      puts self.url = "http://#{self.url}"
+      self.url = "http://#{self.url}"
     end
   end
 end
