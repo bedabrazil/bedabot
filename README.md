@@ -10,7 +10,7 @@ Here are some commands you can use:
 * Remove a faq
 * Create a link with a tag
 * Remove a link
-
+* Typing `help` you will get a list of commands
 ## Dependencies
 
 This app is docker based. To avoid extra configurations, you should have `docker` and `docker-compose` installed. 
