@@ -28,11 +28,6 @@ module FaqModule
         response << ">#{faq.answer}\n"
         faq.hashtags.each do |tag|
           response << "_##{tag.name}_ \n"
-          if !tag.links.blank?
-            tag.links.each do |link|
-              response << ">#{link.id} - <#{link.url}>"
-            end
-          end
         end
         response << "\n\n"
       end

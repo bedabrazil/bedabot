@@ -16,11 +16,7 @@ module FaqModule
         Faq.transaction do
           faq = Faq.create(question: @question, answer: @answer, company: @company)
           @hashtags.split(/[\s,]+/).each do |hashtag|
-            tag = Hashtag.find_by(name: hashtag, company: @company)
-            if tag.blank?
-              tag = Hashtag.create(name: hashtag, company: @company)
-            end
-            faq.hashtags << tag
+            faq.hashtags << Hashtag.create(name: hashtag, company: @company)
           end
         end
         "Criado com sucesso"
