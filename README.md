@@ -6,10 +6,10 @@ This chatbot uses [API.AI] service, and
 This chatbot uses the natural language [API.AI](https://api.ai) service, and is connected to [slack.com](https://slack.com).
 With this **chatbot** you can create a list of frequently asked questions and a list of links.
 Here are some commands you can use:
-*Create a faq with a tag
-*Remove a faq
-*Create a link with a tag
-*Remove a link
+* Create a faq with a tag
+* Remove a faq
+* Create a link with a tag
+* Remove a link
 
 ## Dependencies
 
